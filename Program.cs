@@ -89,6 +89,7 @@
             {
                 Console.WriteLine($"Guess a number between 1 and {randomNumberRange}" +
                     $"\n you have {failThreshold-guessCounter} more guesses.\n");
+
                 int guess = Guess();
                 guessCounter++;
                 if (guess == answer)
@@ -107,9 +108,21 @@
                     Console.WriteLine("\nGame Over\n");
                     Console.ReadKey();
                 }
-                else if((guess < answer && guess >= answer - burnIndicator) ||(guess > answer && guess <= answer + burnIndicator))
+                else if (guess < answer && guess >= answer - burnIndicator)
                 {
-                    Console.WriteLine("\nYou're close!\n");
+                    Console.WriteLine("\nYou're close! Just a little higher.\n");
+                }
+                else if (guess > answer && guess <= answer + burnIndicator)
+                {
+                    Console.WriteLine("\nYou're close! Just a little lower.\n");
+                }
+                else if (guess < answer)
+                {
+                    Console.WriteLine("\nWrong! Higher.\n");
+                }
+                else if (guess > answer)
+                {
+                    Console.WriteLine("\nWrong! Lower.\n");
                 }
 
             } while (guessCounter<failThreshold^play == false);
